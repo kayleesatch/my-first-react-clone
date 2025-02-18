@@ -46,7 +46,7 @@ const fetchMovies = async (query = '') => {
 
     const data = await response.json();
 
-    if(data.response === 'False') {
+    if(data.Response === 'False') {
       setErrorMessages(data.Error || 'Failed to fetch movies');
       setMovieList([]);
       return;
@@ -57,7 +57,6 @@ const fetchMovies = async (query = '') => {
     if (query && data.results.length > 0) {
       await updateSearchCount(query, data.results[0])
     }
-    updateSearchCount()
   } catch (error) {
     console.error(`Error fetching movies: ${error}`);
     setErrorMessages('Error fetching movies. Please try again later.');
